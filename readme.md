@@ -86,4 +86,4 @@ This is the **backend** of the PP5 Task Manager, built with **Django** and **Dja
 
 ## Author
 
-- Your Name
+Anders Langhoff
