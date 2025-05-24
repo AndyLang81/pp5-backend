@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
 import dj_database_url
 from pathlib import Path
 from datetime import timedelta
@@ -7,7 +10,7 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'unsafe-default-secret')
+SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = False
 ALLOWED_HOSTS = ['pp5-backend.onrender.com', 'localhost', '127.0.0.1']
 
