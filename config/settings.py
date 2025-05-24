@@ -97,7 +97,9 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #  CORS settings — allow all origins for development
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "https://https://pp5-frontend.vercel.app/",
+]
 
 #  Django REST Framework settings
 REST_FRAMEWORK = {
