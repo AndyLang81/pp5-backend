@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Security settings
 SECRET_KEY = 'django-insecure-ddq77jr6hmjdema9g(43(o+8zj(59q)^&#&w$o%wqh#moil9k='
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pp5-backend.onrender.com', 'localhost', '127.0.0.1']
 
 # Installed applications
 INSTALLED_APPS = [
