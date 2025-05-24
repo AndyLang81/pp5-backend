@@ -1,28 +1,25 @@
 from rest_framework import generics, permissions
-from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
 
-
-# View to list and create tasks
-class TaskListCreateView(generics.ListCreateAPIView):
+# View that lets logged-in users list and create their own tasks
+class TaskListCreate(generics.ListCreateAPIView):
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
+    # Return only tasks belonging to the logged-in user
     def get_queryset(self):
-        # Only return tasks owned by the logged-in user
         return Task.objects.filter(owner=self.request.user)
 
+    # Save the task with the current user as the owner
     def perform_create(self, serializer):
-        # Set the owner of the task to the logged-in user
         serializer.save(owner=self.request.user)
 
-
-# View to retrieve, update, or delete a specific task
+# View to retrieve, update, or delete a single task by ID
 class TaskDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = TaskSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
+    # Again, limit access to only the user's own tasks
     def get_queryset(self):
-        # Only allow users to interact with their own tasks
         return Task.objects.filter(owner=self.request.user)
