@@ -1,3 +1,5 @@
+import os
+import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 
@@ -28,6 +30,7 @@ INSTALLED_APPS = [
 
 # Middleware configuration
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,11 +64,9 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database configuration
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3', conn_max_age=600)
 }
+
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -113,3 +114,5 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': False,
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
