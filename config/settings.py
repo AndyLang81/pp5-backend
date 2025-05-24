@@ -7,7 +7,7 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security settings
-SECRET_KEY = 'django-insecure-ddq77jr6hmjdema9g(43(o+8zj(59q)^&#&w$o%wqh#moil9k='
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'unsafe-default-secret')
 DEBUG = False
 ALLOWED_HOSTS = ['pp5-backend.onrender.com', 'localhost', '127.0.0.1']
 
