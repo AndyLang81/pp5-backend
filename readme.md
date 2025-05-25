@@ -62,16 +62,24 @@ Note: Requires frontend and valid credentials to use task endpoints.
 
 ## API Endpoints
 
-| Method | Endpoint                | Description                  |
-|--------|-------------------------|------------------------------|
+| Method | Endpoint                | Description                    |
+|--------|-------------------------|--------------------------------|
 | POST   | `/api/token/`           | Obtain access + refresh token |
-| POST   | `/api/token/refresh/`   | Refresh expired access token |
-| GET    | `/api/tasks/`           | List all tasks for user     |
-| POST   | `/api/tasks/`           | Create a new task           |
-| PUT    | `/api/tasks/<id>/`      | Edit an existing task       |
-| DELETE | `/api/tasks/<id>/`      | Delete a task               |
+| POST   | `/api/token/refresh/`   | Refresh expired access token  |
+| GET    | `/api/tasks/`           | List all tasks for user       |
+| POST   | `/api/tasks/`           | Create a new task             |
+| PUT    | `/api/tasks/<id>/`      | Edit an existing task         |
+| DELETE | `/api/tasks/<id>/`      | Delete a task                 |
 
 All endpoints require authentication except `/api/token/` and `/api/token/refresh/`.
+
+## Example: Token Login
+
+Below is an example request body for obtaining a JWT token:
+
+![Token Request Body](screenshots/json-body.png)
+
+Response will include `access` and `refresh` tokens, which must be used in the `Authorization` header when accessing protected endpoints.
 
 ## User Stories
 
@@ -90,22 +98,22 @@ All endpoints require authentication except `/api/token/` and `/api/token/refres
 
 ## Assessment Coverage
 
-| Requirement                          | Status     |
-|--------------------------------------|------------|
-| 3.1 Build backend for data records   | Complete   |
-| 3.2 Custom task model with user FK   | Implemented |
-| 3.3 PEP8-compliant code              | Cleaned and verified |
-| 3.4 Python logic: views, permissions | Implemented using DRF generics and overrides |
-| 3.5 DRF features: serializers, perms | Fully used |
-| 3.6 Working database and relations   | Verified via migrations and admin |
-| 3.7 Full CRUD via API                | Implemented |
-| 3.8 JWT login/register               | Implemented |
-| 3.9 Auth guards on all endpoints     | Enforced using IsAuthenticated |
-| 3.10 Manual API testing              | Performed and logged |
-| 3.11 Git and commit history          | Frequent, descriptive commits |
-| 3.12 Deployed to cloud (Render)      | Live and stable |
-| 3.13 Secure deployment: DEBUG off    | Confirmed with `.env` and Render |
-| 3.14 Deployment process documented   | Included here in README |
+| Requirement                          | Status                |
+|--------------------------------------|------------------------|
+| 3.1 Build backend for data records   | Complete              |
+| 3.2 Custom task model with user FK   | Implemented           |
+| 3.3 PEP8-compliant code              | Cleaned and verified  |
+| 3.4 Python logic: views, permissions | Implemented using DRF |
+| 3.5 DRF features: serializers, perms | Fully used            |
+| 3.6 Working database and relations   | Verified via admin    |
+| 3.7 Full CRUD via API                | Implemented           |
+| 3.8 JWT login/register               | Implemented           |
+| 3.9 Auth guards on all endpoints     | Enforced              |
+| 3.10 Manual API testing              | Performed             |
+| 3.11 Git and commit history          | Frequent, descriptive |
+| 3.12 Deployed to cloud (Render)      | Live and stable       |
+| 3.13 Secure deployment: DEBUG off    | Confirmed             |
+| 3.14 Deployment process documented   | Included in README    |
 
 ## Deployment
 
